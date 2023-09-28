@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('region_id')->comment('自分の住んでる地域');
-            $table->string('text',100)->comment('本文');
-            $table->string('image')->comment('画像');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::create('likes', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('post_id')->onDelete('cascade');
+        $table->foreignId('user_id')->onDelete('cascade');
+        $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('likes');
     }
 };

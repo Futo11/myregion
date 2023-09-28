@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('icon');
+            $table->string('profile_image')->nullable();
+
         });
     }
 
