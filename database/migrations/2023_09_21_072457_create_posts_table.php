@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('region_id')->comment('自分の住んでる地域');
-            $table->string('text',100)->comment('本文');
-            $table->string('image')->comment('画像');
+            $table->string('title', 50)->comment('タイトル');
+            $table->string('body', 200)->comment('本文');
+            $table->string('image')->nullable()->comment('画像');
             $table->softDeletes();
             $table->timestamps();
         });
