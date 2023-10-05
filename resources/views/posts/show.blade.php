@@ -17,6 +17,9 @@
                 <p>{{ $post->body }}</p>    
             </div>
         </div>
+        @if($post->image_url)
+        <div><img src="{{ $post->image_url }}" alt="画像が読み込めません。"/></div>
+        @endif
         <div class="footer"><a href="/">戻る</a></div>
         <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
     </body>
