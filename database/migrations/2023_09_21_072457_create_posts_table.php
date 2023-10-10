@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('region_id')->comment('自分の住んでる地域');
             $table->string('title', 50)->comment('タイトル');
             $table->string('body', 200)->comment('本文');
-            $table->string('image')->nullable()->comment('画像');
             $table->string('image_url')->nullable();
             $table->softDeletes();
             $table->timestamps();

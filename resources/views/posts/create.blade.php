@@ -22,16 +22,12 @@
                 <input type="file" name="image">
             </div>
             <select name="post[region_id]">
-        @foreach($regions as $region)
-            <option value="{{ $region->id }}">{{ $region->name }}</option>
-        @endforeach
-    </select>
-            <input type="submit" value="保存"/>
+                @foreach($regions as $region)
+                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                @endforeach
+            </select>
+            <input type="submit" value="保存"/>     
         </form>
         <div class="back">[<a href="/">back</a>]</div>
-        <div class="category">
-    <h2>Category</h2>
-    
-</div>
     </body>
 </html>
