@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use App\Http\Requests\PostRequest;
 use App\Models\Region;
 use Cloudinary;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -16,9 +16,10 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
 
-    public function show(Post $post)
+    public function show(Post $post, Comment $comment)
     {
-        return view('posts.show')->with(['post' => $post]);
+        $comments=$comment->where('post_id',$post->id)->get();
+        return view('posts.show')->with(['post' => $post,'comments' => $comments]);
     }
 
     public function create(Region $region)
@@ -29,7 +30,6 @@ class PostController extends Controller
    public function store(Request $request, Post $post)
     {
         $input = $request['post'];
-        // dd($request->file('image'));
         if($request->file('image')){ 
             $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
             $input += ['image_url' => $image_url];
