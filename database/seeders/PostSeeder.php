@@ -12,8 +12,8 @@ class PostSeeder extends Seeder
     public function run()
     {
         DB::table('posts')->insert([
-                'title' => '命名の心得',
-                'body' => '命名はデータを基準に考える',
+                'title' => 'タイトル',
+                'body' => '本文',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'region_id' => 1,

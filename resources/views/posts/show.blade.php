@@ -22,5 +22,15 @@
         @endif
         <div class="footer"><a href="/">戻る</a></div>
         <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
+        <form class="w-100" action="/post/{{ $post->id }}/comments"method="post">
+            @csrf
+            <input class="form-control comment-input border-0" placeholder="コメント ..." autocomplete="off" type="text" name="comment" />
+            <input type="submit" value="store"/>
+        </form>
+        @if(!is_null($comments))
+        @foreach($comments as $comment)
+        <p>{{$comment->comment}}</p>
+        @endforeach
+        @endif
     </body>
 </html>
