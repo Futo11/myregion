@@ -2,12 +2,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>my page</title>
+        <title>投稿ページ</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>my page</h1>
+        <h1>投稿ページ</h1>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
@@ -25,7 +25,7 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
-        <a href='/posts/create'>create</a>
+        <a href='/posts/create'>投稿の作成</a>
         <script>
         function deletePost(id) 
         {if (confirm('削除すると復元できません。\n本当に削除しますか？')) 
