@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('title', 50)->comment('タイトル');
             $table->string('body', 200)->comment('本文');
             $table->string('image_url')->nullable();
+            //
+            $table->unsignedBigInteger('user_id');
+            
             $table->softDeletes();
             $table->timestamps();
         });

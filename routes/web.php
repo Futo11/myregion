@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComentController;
+use App\Http\Controllers\LikeController;
 
 
 
@@ -24,6 +25,8 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
 
 Route::post('/post/{post}/comments', [ComentController::class,'store']);
+
+Route::post('/like', [LikeController::class,'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
