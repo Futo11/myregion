@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use App\Models\Region;
 use Cloudinary;
@@ -22,9 +23,9 @@ class PostController extends Controller
         return view('posts.show')->with(['post' => $post,'comments' => $comments]);
     }
 
-    public function create(Region $region)
+    public function create(Region $region, Category $category)
     {
-        return view('posts.create')->with(['regions' => $region->get()]);
+        return view('posts.create')->with(['categories' => $category->get(),'regions' => $region->get()]);
     }
 
    public function store(Request $request, Post $post)
@@ -34,6 +35,7 @@ class PostController extends Controller
             $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
             $input += ['image_url' => $image_url];
         }
+        $post->user_id=\Auth::id();
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }

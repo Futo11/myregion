@@ -26,6 +26,7 @@
         @if($post->image_url)
         <div><img src="{{ $post->image_url }}" alt="画像が読み込めません。"/></div>
         @endif
+        <a href='/posts2/create'>投稿の作成</a>
         <div class="footer"><a href="/">戻る</a></div>
         <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
         <form class="w-100" action="/post/{{ $post->id }}/comments"method="post">
@@ -46,6 +47,7 @@
             <i class="text-4xl like-toggle fas fa-heart" data-id="{{ $post->id }}"></i>
             <span class="text-4xl like-counter">{{ $post->likes->count() }}</span>
         @endif
+        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
         <script>

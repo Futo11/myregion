@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('region_id')->comment('自分の住んでる地域');
+            $table->foreignId('category_id')->comment('aa');
             $table->string('title', 50)->comment('タイトル');
             $table->string('body', 200)->comment('本文');
             $table->string('image_url')->nullable();

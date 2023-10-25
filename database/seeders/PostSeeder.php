@@ -16,7 +16,9 @@ class PostSeeder extends Seeder
                 'body' => '本文',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
+                'user_id' => 1,
                 'region_id' => 1,
+                'category_id' => 1,
          ]);
     }
 }
