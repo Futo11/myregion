@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>投稿を作成</title>
+        <title>投稿を作成aaaaaaa</title>
     </head>
     <body>
         <h1>投稿を作成</h1>

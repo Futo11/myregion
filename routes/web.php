@@ -8,7 +8,6 @@ use App\Http\Controllers\ComentController;
 use App\Http\Controllers\LikeController;
 
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -22,7 +21,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::delete('/posts/{post}', 'delete')->name('delete');
     Route::get('/posts/{post}/edit', 'edit')->name('edit');
 });
-Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
+Route::get('/categories/{category}', [CategoryController::class,'index']);
 
 Route::post('/post/{post}/comments', [ComentController::class,'store']);
 

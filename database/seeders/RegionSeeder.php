@@ -20,18 +20,18 @@ class RegionSeeder extends Seeder
                 'name' => '北海道',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
-         ]);
+        ]);
 
         DB::table('regions')->insert([
                 'name' => '青森',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
-         ]);
+        ]);
         DB::table('regions')->insert([
                 'name' => '秋田',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
-         ]);
+        ]);
         DB::table('regions')->insert([
                 'name' => '岩手',
                 'created_at' => new DateTime(),
