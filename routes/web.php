@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComentController;
 use App\Http\Controllers\LikeController;
-
+use App\Http\Controllers\EventController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,6 +26,9 @@ Route::get('/categories/{category}', [CategoryController::class,'index']);
 Route::post('/post/{post}/comments', [ComentController::class,'store']);
 
 Route::post('/like', [LikeController::class,'store']);
+
+Route::get('/event/{post}/create', [EventController::class,'create']);
+Route::post('/event/{post}', [EventController::class,'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

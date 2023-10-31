@@ -26,7 +26,9 @@
         @if($post->image_url)
         <div><img src="{{ $post->image_url }}" alt="画像が読み込めません。"/></div>
         @endif
-        <a href='/posts2/create'>投稿の作成</a>
+        
+        <a href='/event/{{$post->id}}/create'>投稿の作成</a>
+        
         <div class="footer"><a href="/">戻る</a></div>
         <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
         <form class="w-100" action="/post/{{ $post->id }}/comments"method="post">
@@ -34,11 +36,6 @@
             <input class="form-control comment-input border-0" placeholder="コメント ..." autocomplete="off" type="text" name="comment" />
             <input type="submit" value="store"/>
         </form>
-        @if(!is_null($comments))
-        @foreach($comments as $comment)
-        <p>{{$comment->comment}}</p>
-        @endforeach
-        @endif
         
         @if($post->is_liked_by_auth_user())
             <i class="text-4xl like-toggle fas fa-heart liked" data-id="{{ $post->id }}"></i>
@@ -48,6 +45,17 @@
             <span class="text-4xl like-counter">{{ $post->likes->count() }}</span>
         @endif
         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+        
+        @foreach($events as $event)
+        <p>{{$event->title}}</p>
+        <p>{{$event->body}}</p>
+        @endforeach
+        
+        @if(!is_null($comments))
+        @foreach($comments as $comment)
+        <p>{{$comment->comment}}</p>
+        @endforeach
+        @endif
         
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
         <script>

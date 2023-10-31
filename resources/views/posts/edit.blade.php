@@ -1,15 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
+<x-app-layout>
     <body>
-    <h1 class="title">編集画面</h1>
-    <div class="content">
+    <h1 class="title text-lg flex justify-center rounded bg-yellow-500 p-3">編集画面</h1>
+    <div class="content flex justify-center">
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
             @method('PUT')
@@ -19,10 +11,10 @@
             </div>
             <div class='content__body'>
                 <h2>本文</h2>
-                <input type='text' name='post[body]' value="{{ $post->body }}">
+                <input type='text' name='post[body]' style="width: 200px; height: 100px;" value="{{ $post->body }} ">
             </div>
             <input type="submit" value="保存">
         </form>
     </div>
     </body>
-</html>
+</x-app-layout>

@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use App\Models\Region;
+use App\Models\Event;
 use Cloudinary;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,12 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
 
-    public function show(Post $post, Comment $comment)
+    public function show(Post $post, Comment $comment, Event $event)
     {
         $comments=$comment->where('post_id',$post->id)->get();
-        return view('posts.show')->with(['post' => $post,'comments' => $comments]);
+        $event=$post->events;
+        return view('posts.show')->with(['post' => $post,'comments' => $comments, 'events' => $event]);
+        
     }
 
     public function create(Region $region, Category $category)
@@ -57,4 +60,5 @@ class PostController extends Controller
         $post->delete();
         return redirect('/');
     }
+    
 }
